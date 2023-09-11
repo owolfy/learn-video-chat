@@ -1,6 +1,6 @@
 # Basic Video Chat App to learn WebRTC
 
-# Pure for educational purposes, I didn't bother with styling nor deleting bootstrap files.
+# For educational purposes alone, I didn't bother with styling or deleting Bootstrap files.
 
 # Serving options:
 
