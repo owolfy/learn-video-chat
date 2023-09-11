@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="/socket.io/socket.io.js"></script>
+		<title>Video Chat</title>
+	</head>
+	<body>
+		<div>
+			<h3>Local</h3>
+			<video id="localVideo" autoplay></video>
+		</div>
+		<div>
+			<h3>Remote</h3>
+			<video id="remoteVideo" autoplay></video>
+		</div>
+		<script src="script.js"></script>
+		<button onclick="startCall()">Start Call</button>
+	</body>
+</html>
