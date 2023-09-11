@@ -3,17 +3,26 @@ import { initializeLocalStream, newPeerConnection } from '../modules/RtcPeerConn
 import LocalVideo from './LocalVideo';
 import RemoteVideo from './RemoteVideo';
 import { db } from '../modules/firebase';
-import { doc, onSnapshot, setDoc } from 'firebase/firestore';
+import {
+	DocumentData,
+	DocumentReference,
+	doc,
+	getDoc,
+	onSnapshot,
+	setDoc,
+} from 'firebase/firestore';
 
 const FirebaseChat: React.FC = () => {
 	const [localStream, setLocalStream] = useState<MediaStream | null>(null);
 	const [remoteStream, setRemoteStream] = useState<MediaStream | null>(null);
 	const [roomId, setRoomId] = useState<string>('');
 	const [hasJoinedRoom, setHasJoinedRoom] = useState<boolean>(false);
-	console.log('00rom doc');
-	const roomDoc = doc(db, 'pocVideo', roomId);
+	let roomDoc: DocumentReference<DocumentData, DocumentData>;
+	let roomData;
 
 	async function setup() {
+		roomDoc = doc(db, 'pocVideo', roomId);
+		roomData = (await getDoc(roomDoc)).data();
 		setLocalStream(await initializeLocalStream());
 
 		const newPeerConnection = new RTCPeerConnection();
